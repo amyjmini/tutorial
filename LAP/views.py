@@ -1,18 +1,20 @@
 from django.shortcuts import render, redirect
 from django.core.files.storage import FileSystemStorage
 
-from .forms import SheetForm
+from .forms import FileForm
+from LAP.models import FileModel
+from LAP.serializers import FileSerializer
 
 # Create your views here.
 def home(request):
     context={}
     if request.method == 'POST':
-        form = SheetForm(request.POST, request.FILES)
+        form = FileForm(request.POST, request.FILES)
         if form.is_Valid():
             form.save()
             return redirect(endPage)
     else:
-        form = SheetForm()
+        form = FileForm()
     return render(request, 'home.html', {'form': form})
 
 def loadingPage(request):

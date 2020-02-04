@@ -1,7 +1,7 @@
 from django import forms
-from .models import Sheet
+from .models import FileModel
 
-class SheetForm(forms.ModelForm):
+class FileForm(forms.ModelForm):
     class Meta:
-        model = Sheet
-        fields = ['user_sheet']
+        model = FileModel
+        fields = ['file']

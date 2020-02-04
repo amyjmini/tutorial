@@ -1,7 +1,18 @@
 from django.db import models
+from django.conf import settings
+from django.dispatch import receiver
+from django.db.models.signals import post_delete
 
-# Create your models here.
-class Sheet(models.Model):
+
+class FileModel(models.Model):
     def __str__(self):
-        return self.sheet_name
-    user_sheet = models.ImageField(blank=True, null=True)
+        return self.file_name
+    file = models.FileField(blank=True, null=True)
+
+@receiver(post_delete, sender=FileModel)
+def submission_delete(sender, instance, **kwargs):
+    """
+    This function is used to delete attachments when a file object is deleted.
+    Django does not do this automatically.
+    """
+    instance.file.delete(False)
