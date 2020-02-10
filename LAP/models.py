@@ -5,8 +5,6 @@ from django.db.models.signals import post_delete
 
 
 class FileModel(models.Model):
-    def __str__(self):
-        return self.file_name
     file = models.FileField(blank=True, null=True)
 
 @receiver(post_delete, sender=FileModel)

@@ -3,7 +3,6 @@ from .models import FileModel
 
 
 class FileSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = FileModel
         fields = ('file')
