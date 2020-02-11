@@ -6,7 +6,7 @@
 
     <p class="lead">
         {% for pred in predictions %}
-            <h4> result : <strong>{{ gen_score }}</strong> </h4>
+            <h4> result : <strong>{{ gen_score}}</strong> {{ prediction }}</h4>
         {% endfor %}
 
      <a href="{% url 'endPage' %}" class="btn btn-lg btn-secondary">Finished(완료가 되면 넘어가게끔..구현해야댐..) </a
