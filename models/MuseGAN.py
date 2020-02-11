@@ -509,7 +509,7 @@ class MuseGAN():
             self.plot_model(folder)
 
     def save_model(self, run_folder):
-        self.model.save(os.path.join(run_folder, 'model.h5'))
+        self.model.save(os.path.join(run_folder, 'our_model.h5'))
         self.critic.save(os.path.join(run_folder, 'critic.h5'))
         self.generator.save(os.path.join(run_folder, 'generator.h5'))
         # pickle.dump(self, open( os.path.join(run_folder, "obj.pkl"), "wb" ))

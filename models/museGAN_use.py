@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import flask
 import io
+import pandas
 from music21 import midi
 from music21 import note, stream, duration
 from music21 import converter
@@ -10,7 +11,7 @@ from music21 import converter
 #from models.MuseGAN_old import MuseGAN
 from models.MuseGAN import MuseGAN
 
-from utils.loaders import load_music
+from models.loaders import load_music
 
 from keras.models import load_model
 

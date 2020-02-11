@@ -1,3 +1,6 @@
+requests
+keras
+music21
 djangorestframework
 asgiref==3.2.3
 Django==3.0.2

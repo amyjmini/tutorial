@@ -3,6 +3,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
+from django.conf.urls import url
 
 import LAP.views
 
@@ -12,7 +13,8 @@ urlpatterns = [
     path('loadingPage/', LAP.views.loadingPage, name='loadingPage'),
     path('endPage/', LAP.views.endPage, name='endPage'),
     path('contactPage/', LAP.views.contactPage, name='contactPage'),
-    path('upload/', LAP.views.upload, name='upload')
+    path('upload/', LAP.views.upload, name='upload'),
+    path('download/', LAP.views.download, name='download')
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
