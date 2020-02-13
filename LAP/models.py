@@ -5,4 +5,4 @@ from django.db.models.signals import post_delete
 
 
 class FileModel(models.Model):
-    file = models.FileField(blank=True, null=True)
+    file = models.FileField(blank=False, null=False)
