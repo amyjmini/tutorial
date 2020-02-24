@@ -30,6 +30,7 @@ from models.MusicGenerator import MusicGenerator
 import numpy as np
 
 from django.core.files import File
+from django.http import FileResponse
 
 def home(request):
     context = {}
@@ -45,17 +46,12 @@ def home(request):
 
 @api_view(['GET'])
 def download(request):
-    filename='example'
+    filename = 'example'
     music_gen = MusicGenerator()
     score = music_gen.Generate()
     music_gen.notes_to_midi('models/', score, filename)
 
-    mf = midi.MidiFile()
-    mf.open('models/samples/example.midi')
-    midi_generated = mf.read()
-    mf.close()
-
-    return Response(midi_generated, content_type='file/midi')
+    return FileResponse(open('models/samples/example.midi', 'rb'), content_type='audio/midi')
 
 
 def loadingPage(request):
