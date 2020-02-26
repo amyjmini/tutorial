@@ -2,22 +2,12 @@
 {% block content %}
 
   <main role="main" class="inner cover">
-    <h1 class="cover-heading">Upload music sheet</h1>
-    <p class="lead"> Arrange your music sheet easily</p>
+    <h1 class="cover-heading">AI music sheet</h1>
+    <p class="lead"> Compose piano sheet for training </p>
     <p class="lead">
-      <form method="post" enctype="multipart/form-data" ></form>
-        {% csrf_token %}
-        <p class="btn btn-lg btn-secondary">
-        {{ form }}<button type="submit" class="btn btn-primary"> Upload </button> </p>
-        <!--<input type="file" class="btn btn-lg btn-secondary" name="document">
-        <button type="submit" class="btn btn-lg btn-secondary"> Upload </button>-->
-    </form>
-    {%  if url %}
-      <p>Uploaded file: <a href="{{  url }}">{{ url }}</a></p>
-    {% endif %}
 
       <p class="lead">
-        <a href="{% url 'loadingPage' %}" class="btn btn-lg btn-secondary">START(편곡 시작) </a>
+        <a href="{% url 'endPage' %}" class="btn btn-lg btn-secondary"> START </a>
     </p>
   </main>
 

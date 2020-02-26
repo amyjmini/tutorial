@@ -10,10 +10,8 @@ import LAP.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', LAP.views.home, name='home'),
-    path('loadingPage/', LAP.views.loadingPage, name='loadingPage'),
     path('endPage/', LAP.views.endPage, name='endPage'),
     path('contactPage/', LAP.views.contactPage, name='contactPage'),
-    path('upload/', LAP.views.upload, name='upload'),
     path('download/', LAP.views.download, name='download')
 ]
 if settings.DEBUG:

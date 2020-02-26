@@ -33,47 +33,20 @@ from django.core.files import File
 from django.http import FileResponse
 
 def home(request):
-    context = {}
-    if request.method == 'POST':
-        form = FileForm(request.POST, request.FILES)
-        if form.is_Valid():
-            form.save()
-            return redirect('endPage.html')
-    else:
-        form = FileForm()
-    return render(request, 'home.html', {'form': form})
+    return render(request, 'home.html')
 
 
 @api_view(['GET'])
 def download(request):
+    return FileResponse(open('models/samples/example.midi', 'rb'), content_type='audio/midi')
+
+def endPage(request):
     filename = 'example'
     music_gen = MusicGenerator()
     score = music_gen.Generate()
     music_gen.notes_to_midi('models/', score, filename)
 
-    return FileResponse(open('models/samples/example.midi', 'rb'), content_type='audio/midi')
-
-
-def loadingPage(request):
-    return render(request, 'loadingPage.html')
-
-
-def endPage(request):
     return render(request, 'endPage.html')
-
 
 def contactPage(request):
     return render(request, 'contactPage.html')
-
-
-def upload(request):
-    if request.method == 'POST':
-        uploaded_file = request.FILES['document']
-        print(uploaded_file.name)
-        print(uploaded_file.size)
-    return render(request, 'upload.html')
-
-
-class Compose(views.APIView):
-    template_name = 'loading.html'
-    renderer_classes = [TemplateHTMLRenderer]
