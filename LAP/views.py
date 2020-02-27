@@ -6,6 +6,7 @@ import requests
 
 from django.shortcuts import render, redirect
 
+from keras import backend as K
 import tensorflow as tf
 from django.conf import settings
 from django.views.generic import ListView
@@ -41,6 +42,7 @@ def download(request):
     return FileResponse(open('models/samples/example.midi', 'rb'), content_type='audio/midi')
 
 def endPage(request):
+    K.clear_session()
     filename = 'example'
     music_gen = MusicGenerator()
     score = music_gen.Generate()
